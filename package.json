@@ -1,25 +1,24 @@
 {
-  "name": "cordova-plugin-shake",
-  "version": "0.5.5",
+  "name": "cordova-plugin-accelerometer",
+  "version": "0.0.1",
   "author": "orikami - stijnavdl",
-  "description": "Cordova Plugin to detect when a physical device performs a shake gesture.",
+  "description": "Cordova Plugin to get accelerometer data from smart phone",
   "cordova": {
-    "id": "cordova-plugin-shake",
+    "id": "cordova-plugin-accelerometer",
     "platforms": []
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dreamyourweb/cordova-plugin-shake.git"
+    "url": "git+https://github.com/dreamyourweb/cordova-plugin-accelerometer.git"
   },
   "keywords": [
     "cordova",
-    "shake",
-    "gesture",
     "accelerometer",
+    "gesture",
     "acceleration",
     "detection",
     "ecosystem:cordova"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/dreamyourweb/cordova-plugin-shake#readme"
+  "homepage": "https://github.com/dreamyourweb/cordova-plugin-accelerometer#readme"
 }
