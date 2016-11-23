@@ -1,4 +1,3 @@
-
 module.exports = (function () {
     "use strict";
     var shake = {};
@@ -6,7 +5,7 @@ module.exports = (function () {
     var watchId = null;
 
     var options = {
-        frequency: 300
+        frequency: 100
     };
 
     var previousAcceleration = {
@@ -15,20 +14,21 @@ module.exports = (function () {
         z: null
     };
 
+    var shakings = [];
+
     var shakeCallBack = null;
     var sensitivity = 30;
 
-    // Start watching the accelerometer for a shake gesture
-    shake.startWatch = function (onShake, _sensitivity, onError) {
-        if (typeof (onShake) !== "function") {
-            return;
-        }
+    shake.startWatch = function (_sensitivity, onError) {
+        // if (typeof (onShake) !== "function") {
+        //     return;
+        // }
 
         if (typeof (_sensitivity) === "number") {
             sensitivity = _sensitivity;
         }
 
-        shakeCallBack = debounce(onShake);
+        // shakeCallBack = debounce(onShake);
 
         watchId = navigator.accelerometer.watchAcceleration(assessCurrentAcceleration, onError, options);
     };
@@ -44,11 +44,14 @@ module.exports = (function () {
                 y: null,
                 z: null
             };
+
+            return shakings;
         }
     };
 
     // Assess the current acceleration parameters to determine a shake
     var assessCurrentAcceleration = function (acceleration) {
+        shakings.push(acceleration);
         console.log("acceleration", acceleration);
         console.log("datetime", new Date());
         var accelerationChange = {};
@@ -64,27 +67,10 @@ module.exports = (function () {
             z: acceleration.z
         };
 
-        if (accelerationChange.x + accelerationChange.y + accelerationChange.z > sensitivity) {
-            // Shake detected
-            shakeCallBack();
-        }
-    };
-
-    // Prevent duplicate shakes within 750ms
-    var debounce = function (onShake) {
-        var timeout;
-        return function () {
-            if (timeout) {
-                return;
-            }
-
-            timeout = setTimeout(function () {
-                clearTimeout(timeout);
-                timeout = null;
-            }, 750);
-
-            onShake();
-        };
+        // if (accelerationChange.x + accelerationChange.y + accelerationChange.z > sensitivity) {
+        //     // Shake detected
+        //     shakeCallBack();
+        // }
     };
 
     return shake;
