@@ -20,12 +20,6 @@
     "detection",
     "ecosystem:cordova"
   ],
-  "engines": [
-    {
-      "name": "cordova",
-      "version": ">=5.0.0"
-    }
-  ],
   "license": "MIT",
   "homepage": "https://github.com/dreamyourweb/cordova-plugin-shake#readme"
 }
