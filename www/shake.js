@@ -12,6 +12,15 @@ module.exports = (function () {
         }
 
         watchId = navigator.accelerometer.watchAcceleration(assessCurrentAcceleration, onError, options);
+        console.log("here " + accelerations.length);
+        if(accelerations.length === amount) {
+            navigator.accelerometer.clearWatch(watchId);
+            watchId = null;
+            // shake.stopWatch();
+            console.log(accelerations);
+
+            return accelerations;
+        }
     };
 
     // Stop watching the accelerometer and return collected data
@@ -19,18 +28,12 @@ module.exports = (function () {
         if (watchId !== null) {
             navigator.accelerometer.clearWatch(watchId);
             watchId = null;
-
-            return accelerations;
         }
     };
 
-    // Assess the current acceleration parameters to determine a shake
+    // Assess the current acceleration parameters and push it in the return data
     var assessCurrentAcceleration = function (acceleration) {
-        accelerations.push(acceleration);
-
-        if(accelerations.length === amount) {
-            shake.stopWatch();
-        }
+        accelerations.push(acceleration);        
     };
 
     return shake;
