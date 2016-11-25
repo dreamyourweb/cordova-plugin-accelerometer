@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-accelerometer",
   "version": "0.0.1",
-  "author": "orikami - stijnavdl",
+  "author": "stijnavdl",
   "description": "Cordova Plugin to get accelerometer data from smart phone",
   "cordova": {
     "id": "cordova-plugin-accelerometer",
