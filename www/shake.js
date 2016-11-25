@@ -20,6 +20,8 @@ module.exports = (function () {
             navigator.accelerometer.clearWatch(watchId);
             watchId = null;
         }
+        console.log("accelerations " + accelerations);
+        return acceleration;
     };
 
     // Assess the current acceleration parameters and push it in the return data
@@ -27,14 +29,14 @@ module.exports = (function () {
         accelerations.push(acceleration); 
 
         console.log("here " + accelerations.length);
-        if(accelerations.length === amount) {
-            navigator.accelerometer.clearWatch(watchId);
-            watchId = null;
-            // shake.stopWatch();
-            console.log(accelerations);
+        // if(accelerations.length === amount) {
+        //     navigator.accelerometer.clearWatch(watchId);
+        //     watchId = null;
+        //     // shake.stopWatch();
+        //     console.log(accelerations);
 
-            return accelerations;
-        }       
+        //     return accelerations;
+        // }       
     };
 
     return shake;
